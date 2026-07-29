@@ -56,3 +56,47 @@ export const EVENT_QUERY = defineQuery(`*[_type == "event" && slug.current == $s
 }`)
 
 export const EVENT_SLUGS_QUERY = defineQuery(`*[_type == "event"] { "slug": slug.current }`)
+
+// ─── Job Listings ─────────────────────────────────────────────────────────────
+
+const JOB_CARD_FIELDS = `
+  _id,
+  title,
+  "slug": slug.current,
+  employmentType,
+  engagement,
+  location,
+  stipendOrCompensation,
+  applicationsCloseDate,
+  summary,
+  sortOrder
+`
+
+export const ACTIVE_JOB_LISTINGS_QUERY = defineQuery(`*[_type == "jobListing" && isActive == true] | order(sortOrder asc, title asc) {
+  ${JOB_CARD_FIELDS}
+}`)
+
+export const JOB_LISTING_QUERY = defineQuery(`*[_type == "jobListing" && slug.current == $slug && isActive == true][0] {
+  ${JOB_CARD_FIELDS},
+  aboutSarwagyna,
+  problemStatement,
+  roleOverview,
+  keyResponsibilities[]{
+    groupTitle,
+    bullets
+  },
+  techStack,
+  requirementsMandatory,
+  requirementsPreferred,
+  goodToHave,
+  whoThisIsNotFor,
+  whatYouGet,
+  selectionProcess[]{
+    stage,
+    description
+  },
+  applicationInstructions,
+  applyUrl
+}`)
+
+export const JOB_LISTING_SLUGS_QUERY = defineQuery(`*[_type == "jobListing" && isActive == true] { "slug": slug.current }`)

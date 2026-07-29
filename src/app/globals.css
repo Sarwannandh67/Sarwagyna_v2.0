@@ -28,6 +28,13 @@
     @apply font-sans antialiased transition-colors duration-300 bg-bg text-text;
   }
 
+  /* When Sanity Studio is mounted, drop site text/bg so Studio dark theme stays readable */
+  body:has([data-sanity-root]),
+  body:has(#sanity) {
+    background: transparent;
+    color: inherit;
+  }
+
   :focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
@@ -39,11 +46,25 @@
   h4,
   h5,
   h6 {
-    @apply font-display tracking-[-0.03em] text-text transition-colors duration-300;
+    @apply font-display tracking-[-0.03em] transition-colors duration-300;
+  }
+
+  /* Brand heading color only on the marketing site shell — not inside Studio */
+  .site-shell h1,
+  .site-shell h2,
+  .site-shell h3,
+  .site-shell h4,
+  .site-shell h5,
+  .site-shell h6 {
+    @apply text-text;
   }
 
   p {
-    @apply leading-[1.75] transition-colors duration-300 text-text-secondary;
+    @apply leading-[1.75] transition-colors duration-300;
+  }
+
+  .site-shell p {
+    @apply text-text-secondary;
   }
 
   code,
@@ -55,9 +76,10 @@
     @apply rounded-[18px];
   }
 
-  input,
-  select,
-  textarea {
+  /* Don't restyle Sanity Studio form controls */
+  .site-shell input,
+  .site-shell select,
+  .site-shell textarea {
     @apply rounded-[10px] bg-white border border-border-subtle focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200;
   }
 }
@@ -239,4 +261,17 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Sanity Studio: force readable document titles against dark theme.
+   Site globals previously painted headings with brand --color-text (#0D1F1A). */
+#sanity-studio-root h1,
+#sanity-studio-root h2,
+#sanity-studio-root h3,
+#sanity-studio-root h4,
+#sanity-studio-root h5,
+#sanity-studio-root h6,
+#sanity-studio-root [data-testid="document-panel-document-title"],
+#sanity-studio-root [data-ui="Heading"] {
+  color: #ffffff !important;
 }

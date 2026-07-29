@@ -1,7 +1,5 @@
 // lib/database.types.ts
 
-import type { JobListing } from '@/types/careers'
-
 export type ClientStatus = 'active' | 'inactive' | 'prospect' | 'churned'
 export type ProjectStatus = 'planning' | 'in_progress' | 'review' | 'completed' | 'on_hold'
 export type InvoiceStatus = 'draft' | 'sent' | 'overdue' | 'paid'
@@ -109,13 +107,6 @@ export interface Database {
     Views: {
       client_summary: {
         Row: ClientSummary
-      }
-    }
-    Tables_ext: {
-      job_listings: {
-        Row: JobListing
-        Insert: Omit<JobListing, 'id' | 'created_at' | 'updated_at'>
-        Update: Partial<Omit<JobListing, 'id' | 'created_at' | 'updated_at'>>
       }
     }
   }

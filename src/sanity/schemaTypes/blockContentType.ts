@@ -26,7 +26,10 @@ export const blockContentType = defineType({
         // rendering a <div> inside a <p> (which would be invalid HTML).
         {title: 'Quote',     value: 'blockquote', component: BlockquoteStyle},
       ],
-      lists: [{title: 'Bullet', value: 'bullet'}],
+      lists: [
+        {title: 'Bullet', value: 'bullet'},
+        {title: 'Numbered', value: 'number'},
+      ],
       marks: {
         decorators: [
           {title: 'Strong',   value: 'strong'},

@@ -6,5 +6,8 @@ export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: false, // Set to false if statically generating pages, using ISR or tag-based revalidation
+  useCdn: false,
+  // Required: this project's Content Lake only returns jobListing docs to
+  // authenticated requests (public queries return []). Posts remain public.
+  token: process.env.SANITY_API_READ_TOKEN,
 })

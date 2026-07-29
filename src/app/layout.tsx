@@ -97,8 +97,17 @@ function LayoutShell({ children }: { children: React.ReactNode }) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [pathname]);
 
+  // Keep Sanity Studio free of marketing-site chrome and brand text colors
+  if (pathname?.startsWith('/blogstudio')) {
+    return (
+      <div id="sanity-studio-root" className="min-h-screen bg-[#101112] text-white">
+        {children}
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen flex flex-col font-sans bg-bg text-text dark:bg-bg-dark dark:text-white relative selection:bg-white/20 transition-colors duration-300">
+    <div className="site-shell min-h-screen flex flex-col font-sans bg-bg text-text dark:bg-bg-dark dark:text-white relative selection:bg-white/20 transition-colors duration-300">
       <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-100 focus:bg-white focus:text-black focus:px-4 focus:py-2 focus:rounded-lg">Skip to content</a>
       {/* Secondary Layer */}
       <div className="fixed inset-0 z-0 pointer-events-none dark:bg-[#050509] bg-black/5 opacity-20 transition-colors duration-300" />
@@ -137,7 +146,7 @@ function LayoutShell({ children }: { children: React.ReactNode }) {
         </div>
       </div>
 
-      {pathname !== '/links' && !pathname?.startsWith('/blogstudio') && (
+      {pathname !== '/links' && (
         <PillNav
           logo="/favicon.svg"
           logoFull="/logo.svg"
@@ -165,7 +174,7 @@ function LayoutShell({ children }: { children: React.ReactNode }) {
         {children}
       </main>
       {/* Footer */}
-      {pathname !== '/links' && !pathname?.startsWith('/blogstudio') && (
+      {pathname !== '/links' && (
         <div className="relative z-10" style={{ color: '#0D1F1A' }}>
           <GraphyFooter />
         </div>

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
-import { ShieldCheck, LogOut, AlertTriangle, Lock, Mail, Users, Briefcase } from 'lucide-react';
+import { ShieldCheck, LogOut, AlertTriangle, Lock, Mail, Users, ExternalLink } from 'lucide-react';
 import { useAdminAuth } from '../hooks/useAdminAuth';
 import { supabase } from '../lib/supabaseClient';
 
@@ -26,13 +26,6 @@ const adminTools = [
     title: 'Client Management',
     desc: 'Manage clients, projects, invoices and payment tracking.',
     path: '/admin/clients',
-    badge: 'Active',
-  },
-  {
-    icon: <Briefcase className="w-8 h-8" />,
-    title: 'Careers Manager',
-    desc: 'Add, edit, and manage job listings displayed on the careers page.',
-    path: '/admin/careers',
     badge: 'Active',
   },
 ];
@@ -179,6 +172,30 @@ export default function AdminDashboard() {
               <p className="text-text-secondary text-sm leading-relaxed">{tool.desc}</p>
             </motion.button>
           ))}
+
+          <motion.a
+            href="/blogstudio"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.16, duration: 0.4 }}
+            className="card p-8 rounded-2xl text-left group hover:scale-[1.02] transition-transform duration-200 w-full border-dashed"
+          >
+            <div className="flex items-start justify-between mb-6">
+              <div className="w-14 h-14 rounded-2xl bg-green-light flex items-center justify-center text-(--color-green-icon)">
+                <ExternalLink className="w-8 h-8" />
+              </div>
+              <span className="text-[10px] font-semibold tracking-[0.14em] uppercase px-2 py-1 rounded-full bg-text/5 text-text-muted">
+                Sanity
+              </span>
+            </div>
+            <h2 className="text-xl font-display font-bold text-text mb-2">Job Listings</h2>
+            <p className="text-text-secondary text-sm leading-relaxed">
+              Careers listings are managed in Sanity Studio. Open the studio to add, edit, or
+              activate roles.
+            </p>
+          </motion.a>
         </div>
 
       </div>
