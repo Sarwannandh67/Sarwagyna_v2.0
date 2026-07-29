@@ -41,13 +41,28 @@ export async function getAllEventSlugs() {
 // ─── Job Listings ─────────────────────────────────────────────────────────────
 
 export async function getActiveJobListings(): Promise<JobListingCard[]> {
-  return await client.fetch(ACTIVE_JOB_LISTINGS_QUERY, {}, { next: { revalidate: 60 } })
+  try {
+    return (await client.fetch(ACTIVE_JOB_LISTINGS_QUERY, {}, { next: { revalidate: 60 } })) ?? []
+  } catch (err) {
+    console.error('[careers] Failed to fetch active job listings', err)
+    return []
+  }
 }
 
 export async function getJobListingBySlug(slug: string): Promise<JobListingDetail | null> {
-  return await client.fetch(JOB_LISTING_QUERY, { slug }, { next: { revalidate: 60 } })
+  try {
+    return await client.fetch(JOB_LISTING_QUERY, { slug }, { next: { revalidate: 60 } })
+  } catch (err) {
+    console.error('[careers] Failed to fetch job listing', slug, err)
+    return null
+  }
 }
 
 export async function getAllJobListingSlugs(): Promise<{ slug: string }[]> {
-  return await client.fetch(JOB_LISTING_SLUGS_QUERY, {}, { next: { revalidate: 3600 } })
+  try {
+    return (await client.fetch(JOB_LISTING_SLUGS_QUERY, {}, { next: { revalidate: 3600 } })) ?? []
+  } catch (err) {
+    console.error('[careers] Failed to fetch job listing slugs', err)
+    return []
+  }
 }

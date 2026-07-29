@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Seed job listings into Sanity.
  *
  * Usage:
@@ -64,18 +64,18 @@ function stage(name, description) {
 
 const ABOUT_DEFAULT = blocks(
   'Sarwagyna Private Limited is an AI systems company incorporated in Ongole, Andhra Pradesh, building automation and intelligence products for India-first use cases.',
-  'Our flagship product is SvaraRx — an AI-powered voice-to-prescription SaaS for solo and small-clinic doctors across Andhra Pradesh and Telangana.',
+  'Our flagship product is SvaraRx â€” an AI-powered voice-to-prescription SaaS for solo and small-clinic doctors across Andhra Pradesh and Telangana.',
   'Doctors speak. SvaraRx listens, understands, and generates a structured prescription in under 35 seconds.'
 )
 
 const listings = [
   {
-    _id: 'jobListing.stt-fine-tuning-data-engineering-intern',
+    _id: 'jobListing-stt-fine-tuning-data-engineering-intern',
     _type: 'jobListing',
     title: 'STT Fine-Tuning & Data Engineering Intern',
     slug: { _type: 'slug', current: 'stt-fine-tuning-data-engineering-intern' },
     employmentType: 'Internship',
-    engagement: 'Remote · 3 Months',
+    engagement: 'Remote Â· 3 Months',
     location: 'Remote (India)',
     stipendOrCompensation: 'Performance-based',
     applicationsCloseDate: '2026-06-20',
@@ -86,35 +86,35 @@ const listings = [
     aboutSarwagyna: ABOUT_DEFAULT,
     problemStatement: blocks(
       'Generic STT models like Whisper perform well on clean English speech. They fail on:',
-      '→ Telugu-English code-switched medical speech',
-      '→ Drug names with similar phonetics (Metformin vs Metoprolol, Amlodipine vs Amitriptyline)',
-      '→ Indian doctor accents and speech patterns',
-      '→ Dosage instructions in mixed language ("Tab Metformin 500mg BD after food")',
-      'A wrong drug name in an AI-generated prescription is a patient safety issue — not just a model error.',
+      'â†’ Telugu-English code-switched medical speech',
+      'â†’ Drug names with similar phonetics (Metformin vs Metoprolol, Amlodipine vs Amitriptyline)',
+      'â†’ Indian doctor accents and speech patterns',
+      'â†’ Dosage instructions in mixed language ("Tab Metformin 500mg BD after food")',
+      'A wrong drug name in an AI-generated prescription is a patient safety issue â€” not just a model error.',
       'Your work directly impacts how accurately SvaraRx transcribes doctor speech in real clinical settings.'
     ),
     roleOverview: blocks(
       'You will own two interconnected workstreams:',
-      '1. DATA — Build, clean, and manage the audio dataset that our STT models train and evaluate on.',
-      '2. FINE-TUNING — Fine-tune OpenAI Whisper on our domain-specific medical dataset and benchmark it against Sarvam Saarika on drug name accuracy.',
+      '1. DATA â€” Build, clean, and manage the audio dataset that our STT models train and evaluate on.',
+      '2. FINE-TUNING â€” Fine-tune OpenAI Whisper on our domain-specific medical dataset and benchmark it against Sarvam Saarika on drug name accuracy.',
       'You report directly to the Founder. Your output goes into production.'
     ),
     keyResponsibilities: [
       group('Data Collection & Engineering', [
         'Build and maintain a structured medical audio dataset covering drug names, symptoms, dosages, and prescription instructions in Telugu-English code-switched speech',
         'Source publicly available medical speech datasets (Common Voice, OpenSLR, LibriSpeech derivatives, Mozilla Common Voice Telugu) and evaluate their relevance to our use case',
-        'Annotate and transcribe audio samples — building ground truth transcriptions for model evaluation',
+        'Annotate and transcribe audio samples â€” building ground truth transcriptions for model evaluation',
         'Expand our drug name corpus from 102 current entries to 500+ entries with phonetic variants, common mispronunciations, Telugu transliterations, and brand vs generic mappings',
         'Build preprocessing pipelines: noise reduction, silence trimming, normalization, audio segmentation, format standardisation',
-        'Manage dataset versioning and documentation — every data decision must be recorded',
+        'Manage dataset versioning and documentation â€” every data decision must be recorded',
       ]),
       group('STT Fine-Tuning & Evaluation', [
         'Fine-tune OpenAI Whisper (small or medium) on our medical domain dataset using Hugging Face Trainer API',
         'Design and run evaluation benchmarks measuring WER overall, WER on drug names, WER on dosage instructions, and latency per transcription',
         'Compare fine-tuned Whisper performance against Sarvam Saarika on our benchmark dataset',
-        'Identify and document high-risk drug name pairs — phonetically similar names where confusion could cause patient harm',
+        'Identify and document high-risk drug name pairs â€” phonetically similar names where confusion could cause patient harm',
         'Iterate on training data composition and hyperparameters to improve accuracy on identified failure modes',
-        'Maintain a model versioning log — every training run documented with data version, config, and benchmark results',
+        'Maintain a model versioning log â€” every training run documented with data version, config, and benchmark results',
       ]),
     ],
     techStack: [
@@ -133,14 +133,14 @@ const listings = [
       'Git + GitHub',
     ],
     requirementsMandatory: [
-      'Strong Python — clean, documented, functional code',
-      'Understanding of fine-tuning concepts — you know what it means and why it matters',
+      'Strong Python â€” clean, documented, functional code',
+      'Understanding of fine-tuning concepts â€” you know what it means and why it matters',
       'Familiarity with Hugging Face ecosystem',
       'GitHub profile with real code (no profile = rejected)',
       'Ability to work independently with minimal supervision and flag blockers proactively',
     ],
     requirementsPreferred: [
-      'Telugu language proficiency — critical for understanding code-switching patterns and annotating audio accurately',
+      'Telugu language proficiency â€” critical for understanding code-switching patterns and annotating audio accurately',
       'Prior experience fine-tuning any STT or NLP model',
       'Audio processing experience (librosa, ffmpeg)',
       'Understanding of WER and audio evaluation metrics',
@@ -179,32 +179,32 @@ const listings = [
     applicationInstructions: [
       ...numberedBlocks([
         'Name, college, year, email, LinkedIn, GitHub',
-        'Have you fine-tuned any STT or NLP model before? If yes — describe the model, dataset, metric you measured, and what you improved. Be specific. No generic answers.',
+        'Have you fine-tuned any STT or NLP model before? If yes â€” describe the model, dataset, metric you measured, and what you improved. Be specific. No generic answers.',
         'Do you speak or understand Telugu? Be honest. Proficiency level.',
         'What is WER (Word Error Rate)? Explain in 2 lines without Googling.',
-        'SvaraRx transcribes doctors speaking Telugu-English mixed speech with drug names like "Tab Metformin 500mg BD" and "Inj Tramadol 50mg IV SOS". What would your approach be to improve STT accuracy on drug names specifically? No right answer — we want to see how you think.',
-        'GitHub profile URL — mandatory. No profile means no interview.',
+        'SvaraRx transcribes doctors speaking Telugu-English mixed speech with drug names like "Tab Metformin 500mg BD" and "Inj Tramadol 50mg IV SOS". What would your approach be to improve STT accuracy on drug names specifically? No right answer â€” we want to see how you think.',
+        'GitHub profile URL â€” mandatory. No profile means no interview.',
       ]),
       block('APPLICATIONS CLOSE: June 20, 2026'),
     ],
     applyUrl: 'mailto:sarwan@sarwagyna.com',
   },
   {
-    _id: 'jobListing.ai-agent-llm-engineer-intern',
+    _id: 'jobListing-ai-agent-llm-engineer-intern',
     _type: 'jobListing',
     title: 'AI Agent & LLM Engineer Intern',
     slug: { _type: 'slug', current: 'ai-agent-llm-engineer-intern' },
     employmentType: 'Internship',
     engagement: 'Remote / Flexible Hours / 3 Months',
     location: 'Remote (India)',
-    stipendOrCompensation: 'Up to ₹10,000 based on performance',
+    stipendOrCompensation: 'Up to â‚¹10,000 based on performance',
     isActive: true,
     sortOrder: 2,
     summary:
       'Build a stateful AI agent that conducts real-time voice conversations and qualifies leads using LLMs.',
     aboutSarwagyna: ABOUT_DEFAULT,
     roleOverview: blocks(
-      'You will build the intelligence layer of LeadFlow AI — a stateful AI agent that conducts real-time conversations, qualifies leads, and makes decisions during live voice calls.',
+      'You will build the intelligence layer of LeadFlow AI â€” a stateful AI agent that conducts real-time conversations, qualifies leads, and makes decisions during live voice calls.',
       'This is not a basic prompt engineering role. You will design structured conversation flows, manage state across multiple turns, and build systems that produce consistent, reliable outputs in real time.',
       'We are looking for engineers who can think in systems, not just prompts.'
     ),
@@ -233,7 +233,7 @@ const listings = [
       'Strong problem-solving and system thinking skills',
     ],
     whatYouGet: [
-      'Stipend up to ₹10,000 based on performance',
+      'Stipend up to â‚¹10,000 based on performance',
       'Certificate and public recognition',
       'Hands-on experience building real AI systems',
       'Opportunity to work on core product intelligence',
@@ -242,13 +242,13 @@ const listings = [
       stage('Application review', 'Screening of your application and relevant projects'),
       stage('3-hour AI task', 'Build a stateful agent'),
       stage('Technical interview', 'Focusing on logic and design'),
-      stage('Trial task', '3–5 day trial task'),
+      stage('Trial task', '3â€“5 day trial task'),
     ],
     applyUrl:
-      'mailto:sarwan@sarwagyna.com?subject=Application%20—%20AI%20Engineer%20Intern',
+      'mailto:sarwan@sarwagyna.com?subject=Application%20â€”%20AI%20Engineer%20Intern',
   },
   {
-    _id: 'jobListing.backend-integrations-engineer-intern',
+    _id: 'jobListing-backend-integrations-engineer-intern',
     _type: 'jobListing',
     title: 'Backend & Integrations Engineer Intern',
     slug: { _type: 'slug', current: 'backend-integrations-engineer-intern' },
@@ -258,10 +258,10 @@ const listings = [
     isActive: false,
     sortOrder: 3,
     summary:
-      'Inactive stub — paste full listing content from Supabase into Sanity Studio when available.',
+      'Inactive stub â€” paste full listing content from Supabase into Sanity Studio when available.',
   },
   {
-    _id: 'jobListing.frontend-engineer-intern-nextjs',
+    _id: 'jobListing-frontend-engineer-intern-nextjs',
     _type: 'jobListing',
     title: 'Frontend Engineer Intern (Next.js)',
     slug: { _type: 'slug', current: 'frontend-engineer-intern-nextjs' },
@@ -271,12 +271,12 @@ const listings = [
     isActive: false,
     sortOrder: 4,
     summary:
-      'Inactive stub — paste full listing content from Supabase into Sanity Studio when available.',
+      'Inactive stub â€” paste full listing content from Supabase into Sanity Studio when available.',
   },
   {
-    _id: 'jobListing.research-intern-ai-product-strategy',
+    _id: 'jobListing-research-intern-ai-product-strategy',
     _type: 'jobListing',
-    title: 'Research Intern — AI & Product Strategy',
+    title: 'Research Intern â€” AI & Product Strategy',
     slug: { _type: 'slug', current: 'research-intern-ai-product-strategy' },
     employmentType: 'Internship',
     engagement: 'Remote',
@@ -284,7 +284,7 @@ const listings = [
     isActive: false,
     sortOrder: 5,
     summary:
-      'Inactive stub — paste full listing content from Supabase into Sanity Studio when available.',
+      'Inactive stub â€” paste full listing content from Supabase into Sanity Studio when available.',
   },
 ]
 

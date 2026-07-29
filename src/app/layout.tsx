@@ -9,6 +9,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 import ClarityProvider from '@/components/ClarityProvider';
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import AdSenseScript from '@/components/AdSenseScript';
 import { jetbrainsMono, poppins } from '@/app/fonts';
 
 export default function RootLayout({
@@ -65,12 +66,7 @@ export default function RootLayout({
             gtag('config', 'G-C3690ECPQR');
           `}
         </Script>
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7266890598523714"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
+        <AdSenseScript />
         <ThemeProvider>
           <LayoutShell>{children}</LayoutShell>
         </ThemeProvider>
